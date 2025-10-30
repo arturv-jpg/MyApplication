@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
             String senha = txtSenha.getText().toString();
 
             if (usuario.equals("admin") && senha.equals("admin")) {
-                // Abre a nova tela
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                // vai para o menu após login
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                 startActivity(intent);
             } else {
                 Toast.makeText(MainActivity.this, "Usuário ou senha incorretos!", Toast.LENGTH_SHORT).show();
@@ -44,5 +44,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
 
 
