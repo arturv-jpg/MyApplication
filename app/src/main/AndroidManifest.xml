@@ -13,13 +13,14 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
 
-        <!-- Tela de frases motivacionais -->
         <activity android:name=".HomeActivity" />
 
-        <!-- Tela de menu com botão para ir à Home -->
         <activity android:name=".MenuActivity" />
 
-        <!-- Tela de login (principal) -->
+        <activity android:name=".ConversorActivity" />
+
+        <activity android:name=".TemperaturaActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
