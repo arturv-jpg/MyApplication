@@ -24,6 +24,8 @@
 
         <activity android:name=".CepActivity" />
 
+        <activity android:name=".DogActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

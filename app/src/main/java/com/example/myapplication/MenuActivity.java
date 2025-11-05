@@ -17,6 +17,7 @@ public class MenuActivity extends AppCompatActivity {
         Button btnConversor = findViewById(R.id.btnConversor);
         Button btnTemperatura = findViewById(R.id.btnTemperatura);
         Button btnCep = findViewById(R.id.btnCep);
+        Button btnDog = findViewById(R.id.btnDog);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,13 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, CepActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnDog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, DogActivity.class);
                 startActivity(intent);
             }
         });
