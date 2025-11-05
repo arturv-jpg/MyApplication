@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F0F8FF"
+    tools:context=".CepActivity">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Consulta CEP"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#1A237E"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp" />
+
+    <!-- Campo para digitar o CEP -->
+    <EditText
+        android:id="@+id/txtCEP"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:hint="Digite o CEP"
+        android:inputType="number"
+        android:backgroundTint="#2196F3"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/textView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp" />
+
+    <!-- Botão para consultar -->
+    <Button
+        android:id="@+id/btnConsultaCEP"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:text="Consultar"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2196F3"
+        app:layout_constraintTop_toBottomOf="@id/txtCEP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="35dp" />
+
+    <!-- Resultado da consulta -->
+    <TextView
+        android:id="@+id/txtResultadoCEP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado aparecerá aqui"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/btnConsultaCEP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

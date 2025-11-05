@@ -16,6 +16,7 @@ public class MenuActivity extends AppCompatActivity {
         Button btnHome = findViewById(R.id.btnMotivacional);
         Button btnConversor = findViewById(R.id.btnConversor);
         Button btnTemperatura = findViewById(R.id.btnTemperatura);
+        Button btnCep = findViewById(R.id.btnCep);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,13 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, TemperaturaActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnCep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, CepActivity.class);
                 startActivity(intent);
             }
         });
