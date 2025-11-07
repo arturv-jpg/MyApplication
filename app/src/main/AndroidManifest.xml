@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- 🔹 Permissões (fora da <application>) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 🔹 Recursos usados -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
-
 
     <application
         android:allowBackup="true"
@@ -42,4 +42,5 @@
 
     </application>
 </manifest>
+
 
