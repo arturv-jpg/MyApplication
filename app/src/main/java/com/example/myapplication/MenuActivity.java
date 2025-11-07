@@ -8,6 +8,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,8 @@ public class MenuActivity extends AppCompatActivity {
         Button btnTemperatura = findViewById(R.id.btnTemperatura);
         Button btnCep = findViewById(R.id.btnCep);
         Button btnDog = findViewById(R.id.btnDog);
+        Button btncompras = findViewById(R.id.btncompras);
+        Button btncamera = findViewById(R.id.btncamera);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +55,20 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, DogActivity.class);
+                startActivity(intent);
+            }
+        });
+        btncompras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, ComprasActivity.class);
+                startActivity(intent);
+            }
+        });
+        btncamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, CameraActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 🔹 Permissões (fora da <application>) -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
 
     <application
         android:allowBackup="true"
@@ -15,16 +23,13 @@
         tools:targetApi="31">
 
         <activity android:name=".HomeActivity" />
-
         <activity android:name=".MenuActivity" />
-
         <activity android:name=".ConversorActivity" />
-
         <activity android:name=".TemperaturaActivity" />
-
         <activity android:name=".CepActivity" />
-
         <activity android:name=".DogActivity" />
+        <activity android:name=".ComprasActivity" />
+        <activity android:name=".CameraActivity" />
 
         <activity
             android:name=".MainActivity"
@@ -36,6 +41,5 @@
         </activity>
 
     </application>
-
 </manifest>
 
