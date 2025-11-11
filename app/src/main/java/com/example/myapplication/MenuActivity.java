@@ -22,6 +22,8 @@ public class MenuActivity extends AppCompatActivity {
         Button btnDog = findViewById(R.id.btnDog);
         Button btncompras = findViewById(R.id.btncompras);
         Button btncamera = findViewById(R.id.btncamera);
+        Button btnSalario = findViewById(R.id.btnSalario);
+        Button btnAplicativo = findViewById(R.id.btnAplicativo);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +71,20 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, CameraActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnSalario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, SalarioActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnAplicativo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, AplicativoActivity.class);
                 startActivity(intent);
             }
         });
