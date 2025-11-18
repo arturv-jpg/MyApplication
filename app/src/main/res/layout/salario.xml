@@ -1,83 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:padding="20dp">
 
-    <EditText
-        android:id="@+id/editNome"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome do funcionário"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editBruto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Salário Bruto"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/editNome"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cálculo de Salário"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/editImposto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Imposto"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@id/editBruto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
+        <!-- Nome -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do funcionário:" />
 
-    <Button
-        android:id="@+id/btnIniciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mostrar Dados"
-        app:layout_constraintTop_toBottomOf="@id/editImposto"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        <EditText
+            android:id="@+id/editNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Digite o nome" />
 
-    <TextView
-        android:id="@+id/textResultado"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Resultado aparecerá aqui"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/btnIniciar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
+        <!-- Salário base -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salário base:" />
 
-    <EditText
-        android:id="@+id/editPorcentagem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Qual percentual para aumentar o salario?"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textResultado" />
+        <EditText
+            android:id="@+id/editSalarioBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex: 2000"
+            android:inputType="numberDecimal" />
 
-    <Button
-        android:id="@+id/btnAumentar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aumentar Salário"
-        app:layout_constraintTop_toBottomOf="@id/editPorcentagem"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        <!-- Tipo de funcionário -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de funcionário:"
+            android:layout_marginTop="10dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Spinner
+            android:id="@+id/spinnerTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Campo extra: Bônus (Gerente) -->
+        <TextView
+            android:id="@+id/textBonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bônus:"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/editBonus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex: 500"
+            android:inputType="numberDecimal"
+            android:visibility="gone" />
+
+        <!-- Campo extra: Horas extras (Desenvolvedor) -->
+        <TextView
+            android:id="@+id/textHoras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horas extras:"
+            android:visibility="gone"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:id="@+id/editHoras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex: 10"
+            android:inputType="number"
+            android:visibility="gone" />
+
+        <!-- Botão calcular -->
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcular salário"
+            android:layout_marginTop="20dp" />
+
+        <!-- Resultado -->
+        <TextView
+            android:id="@+id/textResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:text="Resultado aparecerá aqui..." />
+
+    </LinearLayout>
+</ScrollView>

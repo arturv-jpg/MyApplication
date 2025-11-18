@@ -1,24 +1,29 @@
 package com.example.myapplication;
 
 public class FuncionarioActivity {
-    private String nome;
-    private Float salarioBase;
-    public FuncionarioActivity(String name, Float salarioBase) {
+
+    protected String nome;
+    protected float salarioBase;
+
+    public FuncionarioActivity(String nome, float salarioBase) {
         this.nome = nome;
+        this.salarioBase = salarioBase;
     }
-    public String GetNome() {
+
+    public String getNome() {
         return nome;
     }
+
     public float getSalarioBase() {
         return salarioBase;
     }
+
     public float calcularSalario() {
         return salarioBase;
     }
+
     @Override
     public String toString() {
         return "Funcionário: " + nome + " | Salário final: R$ " + calcularSalario();
     }
 }
-
-

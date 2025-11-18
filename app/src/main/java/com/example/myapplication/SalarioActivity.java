@@ -6,52 +6,90 @@ import android.view.View;
 import android.widget.*;
 
 public class SalarioActivity extends AppCompatActivity {
-    EditText editNome, editBruto, editImposto, editPorcentagem;
-    TextView textResultado;
-    Button btnIniciar, btnAumentar;
-    String nome;
-    double salarioBruto, imposto;
+
+    EditText editNome, editSalarioBase, editBonus, editHoras;
+    TextView textResultado, textBonus, textHoras;
+    Spinner spinnerTipo;
+    Button btnCalcular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.salario);
 
+        // Referências XML
         editNome = findViewById(R.id.editNome);
-        editBruto = findViewById(R.id.editBruto);
-        editImposto = findViewById(R.id.editImposto);
-        editPorcentagem = findViewById(R.id.editPorcentagem);
+        editSalarioBase = findViewById(R.id.editSalarioBase);
+
+        editBonus = findViewById(R.id.editBonus);
+        editHoras = findViewById(R.id.editHoras);
+
+        textBonus = findViewById(R.id.textBonus);
+        textHoras = findViewById(R.id.textHoras);
+
+        spinnerTipo = findViewById(R.id.spinnerTipo);
         textResultado = findViewById(R.id.textResultado);
-        btnIniciar = findViewById(R.id.btnIniciar);
-        btnAumentar = findViewById(R.id.btnAumentar);
+        btnCalcular = findViewById(R.id.btnCalcular);
 
-        btnIniciar.setOnClickListener(new View.OnClickListener() {
+        // Configuração do Spinner
+        String[] tipos = {"Gerente", "Desenvolvedor", "Estagiário"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipos);
+        spinnerTipo.setAdapter(adapter);
+
+        // Mostrar campos dependendo do tipo
+        spinnerTipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                nome = editNome.getText().toString();
-                salarioBruto = Double.parseDouble(editBruto.getText().toString());
-                imposto = Double.parseDouble(editImposto.getText().toString());
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                double salarioLiquido = salarioBruto - imposto;
+                // Esconde tudo
+                textBonus.setVisibility(View.GONE);
+                editBonus.setVisibility(View.GONE);
+                textHoras.setVisibility(View.GONE);
+                editHoras.setVisibility(View.GONE);
 
-                textResultado.setText("Funcionário: " + nome + ", R$ " + String.format("%.2f", salarioLiquido));
-            }
-        });
-        btnAumentar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (nome == null) {
-                    Toast.makeText(SalarioActivity.this, "Insira os dados primeiro!", Toast.LENGTH_SHORT).show();
-                    return;
+                if (position == 0) { // Gerente
+                    textBonus.setVisibility(View.VISIBLE);
+                    editBonus.setVisibility(View.VISIBLE);
                 }
-                double porcentagem = Double.parseDouble(editPorcentagem.getText().toString());
-                salarioBruto += salarioBruto * (porcentagem / 100);
-
-                double salarioLiquido = salarioBruto - imposto;
-
-                textResultado.setText("Funcionário: " + nome +
-                        "\nDados atualizados: " + nome + String.format(",R$ %.2f", salarioLiquido));
+                if (position == 1) { // Desenvolvedor
+                    textHoras.setVisibility(View.VISIBLE);
+                    editHoras.setVisibility(View.VISIBLE);
+                }
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
+
+        // Botão calcular
+        btnCalcular.setOnClickListener(v -> calcularFuncionario());
+    }
+
+    private void calcularFuncionario() {
+
+        try {
+            String nome = editNome.getText().toString();
+            float salarioBase = Float.parseFloat(editSalarioBase.getText().toString());
+
+            FuncionarioActivity funcionario;
+            int tipo = spinnerTipo.getSelectedItemPosition();
+
+            if (tipo == 0) { // Gerente
+                float bonus = Float.parseFloat(editBonus.getText().toString());
+                funcionario = new Gerente(nome, salarioBase, bonus);
+
+            } else if (tipo == 1) { // Desenvolvedor
+                int horas = Integer.parseInt(editHoras.getText().toString());
+                funcionario = new Desenvolvedor(nome, salarioBase, horas);
+
+            } else { // Estagiário
+                funcionario = new Estagiario(nome, salarioBase);
+            }
+
+            textResultado.setText(funcionario.toString());
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Preencha todos os campos corretamente!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
